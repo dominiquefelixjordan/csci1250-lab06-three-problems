@@ -29,16 +29,36 @@ if (choice == 1 || choice == 4)
 {
 int score;
 
-
 Console.WriteLine("=== Excercise 1: The Grade Checker ===");
 Console.Write("Please enter score: ");
 score = Convert.ToInt32(Console.ReadLine());
 
-// while loop used so the program doesn't continue with a number outside these parameters
+// while loop used so the program doesn't continue with a number outside these parameters and resets
 
 while (score > 100 || score < 0)
 {Console.WriteLine("Choose a number between 0 and 100");
 score = 0;
+}
+
+// else if used to organize scores from top to bottom 
+ if (score >= 90)
+ {Console.WriteLine("Score: " + score);
+ Console.WriteLine(score + " earns an A");
+}
+
+else if (score >= 80)
+{Console.WriteLine("Score: " + score);
+Console.WriteLine(score + " earns an B");
+}
+
+else if (score >= 70)
+{Console.WriteLine("Score: " + score);
+Console.WriteLine(score + " earns an C");
+}
+
+else if (score < 60)
+{Console.WriteLine("Score: " + score);
+Console.WriteLine(score + " earns an F");
 }
 }
 
