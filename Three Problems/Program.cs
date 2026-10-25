@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Data.SqlTypes;
+using System.Runtime.CompilerServices;
 
 int choice;
 
@@ -62,10 +63,51 @@ Console.WriteLine(score + " earns an F");
 }
 }
 
+//need to add running total & win counter
+
+Random rng = new Random(4000);
+int wins = 0;
+int rolls = 0;
+string rollAgain = "y";
 if (choice == 2 || choice == 4)
+
+
+
+   Console.WriteLine("=== Excercise 2 The Dice Table ===");
+
+// this loop starts with a dice roll and continues as long as we want it to
+do
 {
-    //excercise 2
+    int roll1 = rng.Next(1,7);
+    int roll2 = rng.Next(1,7);
+    int sum = roll1 + roll2;
+    rolls++;
+
+    Console.Write($"Roll {rolls}: {roll1} and {roll2}, total {sum}. ");
+
+
+
+if (sum == 2)
+{Console.Write("Snake eyes.");}
+
+if (roll1 == roll2 && roll1 != 1)
+{Console.Write("Doubles!");}
+
+if (sum == 7 || sum == 11)
+{Console.Write("A winner!");
+wins++;}
+
+Console.WriteLine("\nRoll again? y/n: ");
+rollAgain = Console.ReadLine();
+
+} while (rollAgain == "y");
+
+if (rollAgain != "y")
+{Console.WriteLine($"You rolled {rolls} times and won {wins}");
 }
+
+
+
 
 if (choice == 3 || choice == 4)
 {
