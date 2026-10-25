@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlTypes;
 using System.Runtime.CompilerServices;
-
+Random rng = new Random(4000);
 int choice;
 
 // do while loop used to show menu as long as entry isnt 5
@@ -63,9 +63,6 @@ Console.WriteLine(score + " earns an F");
 }
 }
 
-//need to add running total & win counter
-
-Random rng = new Random(4000);
 int wins = 0;
 int rolls = 0;
 string rollAgain = "y";
