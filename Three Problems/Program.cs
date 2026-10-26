@@ -1,5 +1,16 @@
-﻿using System.Data.SqlTypes;
-using System.Runtime.CompilerServices;
+﻿/*
+Name:       Felix Jordan
+Course:     CSCI 1250, Section 001
+Assignment: Lab06, Three Short Problems
+Date:       10/25/2026
+Description: A menu that keeps running until the user quits, offering three
+independent exercises or all three at once. Each excercise
+practices decisions and one of the four loops        
+
+*/
+
+
+
 Random rng = new Random(4000);
 int choice;
 
@@ -28,6 +39,7 @@ if (choice > 5)
 
 if (choice == 1 || choice == 4)
 {
+
 int score;
 
 Console.WriteLine("=== Excercise 1: The Grade Checker ===");
@@ -38,7 +50,9 @@ score = Convert.ToInt32(Console.ReadLine());
 
 while (score > 100 || score < 0)
 {Console.WriteLine("Choose a number between 0 and 100");
-score = 0;
+Console.Write("Please enter score: ");
+score = Convert.ToInt32(Console.ReadLine());
+;
 }
 
 // else if used to organize scores from top to bottom 
@@ -66,8 +80,11 @@ Console.WriteLine(score + " earns an F");
 int wins = 0;
 int rolls = 0;
 string rollAgain = "y";
-if (choice == 2 || choice == 4)
 
+
+
+if (choice == 2 || choice == 4)
+{
 
 
    Console.WriteLine("=== Excercise 2 The Dice Table ===");
@@ -75,6 +92,7 @@ if (choice == 2 || choice == 4)
 // this loop starts with a dice roll and continues as long as we want it to
 do
 {
+
     int roll1 = rng.Next(1,7);
     int roll2 = rng.Next(1,7);
     int sum = roll1 + roll2;
@@ -102,21 +120,45 @@ rollAgain = Console.ReadLine();
 if (rollAgain != "y")
 {Console.WriteLine($"You rolled {rolls} times and won {wins}");
 }
-
-
-
-
-if (choice == 3 || choice == 4)
-{
-    //excercise 3
 }
 
 
 
+if (choice == 3 || choice == 4)
+
+{
+   Console.WriteLine("=== Excercise 3: The Score Report ===");
+
+double[] scores = new double[5];
+double total = 0;
+double passingGrades = 0;
+
+for (int i = 0; i < 5; i++)
+{  
+     Console.Write($"Score {i+1}: ");
+    scores[i] = Convert.ToUInt64(Console.ReadLine());
+   total = total + scores[i];
+}
+ 
+foreach (double score in scores)
+{if (score > 60)
+{passingGrades++;
+}
+}
+
+double max = scores.Max();
+
+
+
+Console.WriteLine($"Scores entered: {scores.Length}");
+Console.WriteLine($"Score total: {total}");
+Console.WriteLine($"Score Average: {total / (scores.Length)}");
+Console.WriteLine($"Highest: {max}");
+Console.WriteLine($"Passing: {passingGrades} of {scores.Length} ");
+}
+
+choice = 0;
 }while (choice != 5); 
 
-
-
-
-
  Console.WriteLine("Goodbye.");
+ 
